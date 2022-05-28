@@ -1,17 +1,15 @@
 from ast import Global
+from cProfile import label
 from http.client import NOT_MODIFIED
 from tkinter import *
 from PIL import Image, ImageTk
 from tkinter import ttk, messagebox
+import time
 import os
 
 class Sign_page():
     def __init__(self,root):
 
-        global email_entry
-        global name_entry
-        global password_txt
-        global notif
 
         self.email_entry = StringVar()
         self.name_entry = StringVar()
@@ -35,13 +33,13 @@ class Sign_page():
         self.frame3 = Frame(self.frame2, bg="white")
         self.frame3.place(x=140,y=150,width=500,height=450)
 
-        self.name_label = Label(self.frame3,text="Name: ", font=("helvetica",14,"bold"),bg="white", fg="gray").place(x=40,y=40)
+        self.name_label = Label(self.frame3,text="Name: ", font=("helvetica",12,"bold"),bg="white", fg="gray").place(x=40,y=40)
         self.name_entry = Entry(self.frame3, font=("times new roman",15,"bold"),bg="white",fg="gray")
-        self.name_entry.place(x=150, y =40, width=200)
+        self.name_entry.place(x=150, y =40, width=300)
 
-        self.email_label = Label(self.frame3,text="Email: ", font=("helvetica",14,"bold"),bg="white", fg="gray").place(x=40,y=80)
+        self.email_label = Label(self.frame3,text="Email: ", font=("helvetica",12,"bold"),bg="white", fg="gray").place(x=40,y=80)
         self.email_entry = Entry(self.frame3, font=("times new roman",15,"bold"),bg="white",fg="gray")
-        self.email_entry.place(x=150, y =80, width=200)
+        self.email_entry.place(x=150, y =80, width=300)
 
         sec_question = Label(self.frame3, text="District:", font=("helvetica",14,"bold"),bg="white", fg='gray').place(x=40, y=120)
         self.questions = ttk.Combobox(self.frame3,font=("helvetica",13),state='readonly',justify=CENTER)
@@ -67,17 +65,12 @@ class Sign_page():
         self.all_accounts = os.listdir()
 
         if self.name == "" or self.email == "" or self.password == "":
-            self.notif.config(fg='red', text = "All files are required!")
-        for self.name_check in self.all_accounts:
-            if self.email == self.name_check:
-                self.notif.config(fg='red', text="Account already exists")
-                return
+            messagebox.showerror("Error!", "Sorry!, All fields are required", parent=self.window)
+            return
         else:
             with open("Account.txt", 'a') as a:
                 x = a.write(self.name + '\t\t' + self.email + '\t\t' + self.password + '\n')
                 self.notif.config(fg='Green', text="Registration Successfull!")
-
-
 
 
 if __name__ == '__main__':

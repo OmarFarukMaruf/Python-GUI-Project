@@ -24,9 +24,9 @@ class Customer:
         self.frame3 = Frame(self.frame2, bg="white")
         self.frame3.place(x=140,y=150,width=600,height=400)
 
-        self.add_product = Button(self.frame3, text='SEARCH PRODUCT', font=('time new roman',12, 'bold'), bd=0, cursor='hand2', bg='sky blue').place(x=220, y=100)
-        self.add_product = Button(self.frame3, text='DISPLAY PRODUCT', font=('time new roman',12, 'bold'), bd=0, cursor='hand2', bg='sky blue').place(x=220, y=50)
-        self.add_product = Button(self.frame3, text='EXIT', font=('time new roman',12, 'bold'), bd=0, cursor='hand2', bg='red').place(x=280, y=220)
+        self.search = Button(self.frame3, text='SEARCH PRODUCT', font=('time new roman',12, 'bold'), bd=0, cursor='hand2', bg='sky blue').place(x=220, y=100)
+        self.display = Button(self.frame3, text='DISPLAY PRODUCT', font=('time new roman',12, 'bold'), bd=0, cursor='hand2', bg='sky blue').place(x=220, y=50)
+        self.get_out = Button(self.frame3, text='EXIT', font=('time new roman',12, 'bold'), bd=0, cursor='hand2', bg='red').place(x=280, y=220)
 
 
 

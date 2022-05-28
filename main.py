@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import ttk, messagebox
 import pymysql
 from PIL import Image, ImageTk
-from copy_log import Log_page
+from copy_log import Log_page, CusLog_page
 
 
 
@@ -27,15 +27,22 @@ class Main:
         self.frame3 = Frame(self.frame2, bg="white")
         self.frame3.place(x=140,y=150,width=500,height=450)
 
-        self.customer_button = Button(self.frame3,text="Customer", command=self.call_login, font=("times new roman",25, "bold"),bd=0,cursor="hand2", bg='sky blue').place(x=160,y=150)
+        self.customer_button = Button(self.frame3, text="Customer", command=self.customer_login, font=(
+            "times new roman", 25, "bold"), bd=0, cursor="hand2", bg='sky blue').place(x=160, y=150)
 
-        self.seller_button = Button(self.frame3,text="Seller",command=self.call_login,font=("times new roman",25, "bold"),bd=0,cursor="hand2", bg='sky blue').place(x=180,y=250)
+        self.seller_button = Button(self.frame3,text="Seller",command=self.sell_login,font=("times new roman",25, "bold"),bd=0,cursor="hand2", bg='sky blue').place(x=180,y=250)
 
 
-    def call_login(self):
+    def sell_login(self):
         self.window.destroy()
         root = Tk()
         obj_3 = Log_page(root)
+        root.mainloop()
+
+    def customer_login(self):
+        self.window.destroy()
+        root = Tk()
+        obj_3 = CusLog_page(root)
         root.mainloop()
 
 
